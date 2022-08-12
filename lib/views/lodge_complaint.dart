@@ -95,8 +95,8 @@ class _LodgeComplaintState extends State<LodgeComplaint> {
                   ),
                   hintText: 'Write extra notes...',
                 ),
-                minLines: 8,
-                maxLines: 10,
+                minLines: 6,
+                maxLines: 8,
               ),
               Container(height: 10,),
               Row(

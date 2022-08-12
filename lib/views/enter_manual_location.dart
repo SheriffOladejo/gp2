@@ -10,6 +10,23 @@ class EnterManualLocation extends StatefulWidget {
 }
 
 class _EnterManualLocationState extends State<EnterManualLocation> {
+
+  var governorate_list = [
+    "Amman",
+    "Al-Zarqa",
+    "Ajloun",
+    "Al-Aqaba",
+    "Al-Balqa",
+    "Al-Karak",
+    "Al-Tafilah",
+    "Irbid",
+    "Jerash",
+    "Ma'an",
+    "Madaba",
+    "Mafraq",
+  ];
+  String selected_governotate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,14 +73,27 @@ class _EnterManualLocationState extends State<EnterManualLocation> {
                 ),
               ),
               Container(height: 10,),
-              TextFormField(
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DropdownButton<String>(
+                      hint: Text("Choose"),
+                      value: selected_governotate,
+                      icon: Icon(Icons.keyboard_arrow_down),
+                      items: governorate_list.map((items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          selected_governotate = newValue;
+                        });
+                      },
+                    ),
+                  ],
                 ),
               ),
               Container(height: 10,),
@@ -85,14 +115,12 @@ class _EnterManualLocationState extends State<EnterManualLocation> {
                 ),
               ),
               Container(height: 10,),
-              TextFormField(
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(8),  // Added this
                 ),
               ),
               Container(height: 10,),
@@ -114,14 +142,12 @@ class _EnterManualLocationState extends State<EnterManualLocation> {
                 ),
               ),
               Container(height: 10,),
-              TextFormField(
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1.0),
-                  ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(8),  // Added this
                 ),
               ),
               Container(height: 10,),
@@ -140,8 +166,8 @@ class _EnterManualLocationState extends State<EnterManualLocation> {
                   ),
                   hintText: '',
                 ),
-                minLines: 8,
-                maxLines: 10,
+                minLines: 5,
+                maxLines: 6,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
